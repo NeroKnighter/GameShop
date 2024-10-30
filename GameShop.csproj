@@ -27,6 +27,7 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4" />
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.5" />
+		<ProjectReference Include="..\Repositories\GameShop.DAL.csproj" />
 		<ProjectReference Include="..\Services\GameShop.Services.csproj" />
 	</ItemGroup>
 

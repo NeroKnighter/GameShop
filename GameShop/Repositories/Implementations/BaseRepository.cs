@@ -1,20 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Repositories.Interfaces;
+﻿using GameShop;
+using GameShop.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameShop;
-using GameShop.DAL;
 
-
-namespace Repositories.Implementations
+namespace GameShop.Repositories.Implementations
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        private ApplicationDBContext _context;
-        private DbSet<T> _dbSet;
+        private  ApplicationDBContext _context;
+        private  DbSet<T> _dbSet;
         public BaseRepository(ApplicationDBContext context)
         {
             _context = context;

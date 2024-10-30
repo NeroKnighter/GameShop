@@ -1,0 +1,50 @@
+﻿@model GameShop.Domain.Models.User
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/GameShop.styles.css" asp-append-version="true" />
+
+
+<tr><h1>Данные аккаунта:</h1></tr>
+<table class="ProfileTable">
+    <tr>
+        <td>Логин:</td>
+        <td><input type="text" asp-for="Name" class="input-group-text" value="@Model.Name" readonly /></td>
+    </tr>
+    <tr>
+        <td>Пароль:</td>
+        <td><input type="text" asp-for="Password" class="input-group-text" value="@Model.Password" readonly /></td>
+    </tr>
+    <tr><td><a asp-action="ChangeThePassword" asp-controller="Account" class="btn btn-primary">Поменять пароль</a></td></tr>
+
+    <tr><td><h1>Ваш профиль:</h1></td></tr>
+    <tr>
+        <td>Имя:</td>
+        <td><input type="text" asp-for="ProfileName" class="input-group-text" value="@Model.ProfileName" readonly /></td>
+    </tr>
+    <tr>
+        <td>Фамилия:</td>
+        <td><input type="text" asp-for="Surname" class="input-group-text" value="@Model.Surname" readonly /></td>
+    </tr>
+    <tr>
+        <td>Отчество:</td>
+        <td><input type="text" asp-for="Patronymic" class="input-group-text" value="@Model.Patronymic" readonly /></td>
+    </tr>
+    <tr>
+        <td>Почта:</td>
+        <td><input type="text" asp-for="Email" class="input-group-text" value="@Model.Email" readonly /></td>
+    </tr>
+    <tr>
+        <td>Номер телефона:</td>
+        <td><input type="text" asp-for="PhoneNumber" class="input-group-text" value="@Model.PhoneNumber" readonly /></td>
+    </tr>
+    <tr>
+        <td>Номер карты:</td>
+        <td><input type="text" asp-for="CreditCard" class="input-group-text" value="@Model.CreditCard" readonly /></td>
+    </tr>
+    <tr><td><a asp-action="Edit" asp-controller="Account" class="btn btn-primary">Редактировать</a></td></tr>
+</table>
+<br />
+<form asp-controller="Account" asp-action="LogOut">
+    <input class="btn btn-danger" type="submit" value="Выйти">
+</form>

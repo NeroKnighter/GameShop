@@ -1,0 +1,25 @@
+﻿@model GameShop.Domain.Models.ViewModels.LogInViewModel
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/GameShop.styles.css" asp-append-version="true" />
+
+<center>
+    <h1>Авторизация</h1>
+    <form asp-action="LogIn" asp-controller="Account">
+        <div asp-validation-summary="ModelOnly"></div>
+        <table class="RegTable">
+            <tr>
+                <td><label asp-for="Name">Логин:</label></td>
+                <td><input type="text" asp-for="Name" class="input-group-text" /></td>
+                <td><span asp-validation-for="Name"></span></td>
+            </tr>
+            <tr>
+                <td><label asp-for="Password">Пароль:</label></td>
+                <td><input type="password" asp-for="Password" class="input-group-text" /></td>
+                <td><span asp-validation-for="Password"></span></td>
+            </tr>
+        </table>
+        <input type="submit" value="Авторизация" class="btn btn-primary" />
+    </form>
+</center>

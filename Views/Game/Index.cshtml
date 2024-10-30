@@ -1,0 +1,40 @@
+﻿@model IEnumerable<GameShop.Domain.Models.Game>
+@using GameShop.Domain.Models
+<body>
+    <table class="GTable">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img src="@ViewBag.Images[Model.ToList().IndexOf(item)]" style="max-height: 100px; max-width: 100px" /></td>
+                <td>
+                    @{
+                        var items = ViewBag.Genres as List<Genre>;
+                    }
+                    <h3>@item.Name</h3>
+                    <p>@items.FirstOrDefault(x => x.Id == item.GenreId).Name</p>
+                </td>
+                <td>@item.Description</td>
+                <td style="width: 65px">
+                    <strong>@string.Format("{0:C0}", item.Price)</strong>
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+
+<style>
+    table.GTable {
+    }
+
+        table.GTable td {
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 0;
+        }
+
+        table.GTable tr {
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 0;
+        }
+</style>

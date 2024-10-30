@@ -1,0 +1,56 @@
+﻿@model GameShop.Domain.Models.ViewModels.EditViewModel
+<form asp-action="Edit" asp-controller="Account">
+    <div asp-validation-summary="ModelOnly"></div>
+    <table class="ProfileTable">
+        <tr>
+            <td><h1>Редактировать профиль:</h1></td>
+        </tr>
+        <tr>
+
+            <td><label asp-for="Name">Логин:</label></td>
+            <td><input type="text" asp-for="Name" class="input-group-text" value="@ViewBag.Name" readonly /></td>
+            <td><span asp-validation-for="Name"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="ProfileName">Имя:</label></td>
+            <td><input type="text" asp-for="ProfileName" class="input-group-text" value="@ViewBag.ProfileName" /></td>
+            <td><span asp-validation-for="ProfileName"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Surname">Фамилия:</label></td>
+            <td><input type="text" asp-for="Surname" class="input-group-text" value="@ViewBag.Surname" /></td>
+            <td><span asp-validation-for="ProfileName"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Patronymic">Отчество:</label></td>
+            <td><input type="text" asp-for="Patronymic" class="input-group-text" value="@ViewBag.Patronymic" /></td>
+            <td><span asp-validation-for="Patronymic"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Email">Почта:</label></td>
+            <td><input type="text" asp-for="Email" class="input-group-text" value="@ViewBag.Email" /></td>
+            <td><span asp-validation-for="Email"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="PhoneNumber">Номер телефона:</label></td>
+            <td><input type="text" asp-for="PhoneNumber" class="input-group-text" value="@ViewBag.PhoneNumber" /></td>
+            <td><span asp-validation-for="PhoneNumber"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="CreditCard">Номер карты:</label></td>
+            <td><input type="text" asp-for="CreditCard" class="input-group-text" value="@ViewBag.CreditCard" /></td>
+            <td><span asp-validation-for="CreditCard"></span></td>
+        </tr>
+        <tr>
+            <td><a asp-action="Profile" asp-controller="Account" class="btn btn-primary">Назад</a></td>
+            <td><input type="submit" value="Сохранить" class="btn btn-primary" style="margin-left: 104px; background-color: green"/></td>
+        </tr>
+    </table>
+    <br />
+    <br />
+
+</form>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>

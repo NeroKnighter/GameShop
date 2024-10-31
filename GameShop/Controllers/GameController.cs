@@ -32,8 +32,8 @@ namespace GameShop.Controllers
             var Images = games.Select(game => $"data:image/jpeg;base64,{Convert.ToBase64String(game.Image)}").ToList();
             ViewBag.Images = Images;
             return View(_gameRepository.GetAll().ToList());
-        }   
-        [HttpGet]   
+        }
+        [HttpGet]
         public ActionResult Add()
         {
             var Genres = _genreRepository.GetAll().ToList();
@@ -43,27 +43,19 @@ namespace GameShop.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Add(GameAddViewModel game)
+        public ActionResult Add(GameAddViewModel model)
         {
             var Genres = _genreRepository.GetAll().ToList();
             ViewBag.Genres = Genres;
+
             if (ModelState.IsValid)
             {
-                Game newgame = new Game()
+                var response = _gameService.Add(model);
+                if (response.StatusCode == "OK")
                 {
-                    Name = game.Name,
-                    Description = game.Description,
-                    GenreId = game.GenreId,
-                    Price = game.Price
-                };
-                using (var memoryStream = new MemoryStream())
-                {
-                    await game.Image.CopyToAsync(memoryStream);
-                    newgame.Image = memoryStream.ToArray();
+                    return RedirectToAction("Index", "Game");
                 }
 
-                await _gameRepository.Create(newgame);
-                return RedirectToAction("Index", "Game");
             }
             return View();
         }

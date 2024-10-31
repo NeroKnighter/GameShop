@@ -1,5 +1,6 @@
 ﻿using GameShop.Domain;
 using GameShop.Domain.Models;
+using GameShop.Domain.Models.ViewModels;
 using GameShop.Service.Interfaces;
 using Repositories.Interfaces;
 using System;
@@ -17,13 +18,23 @@ namespace GameShop.Service.Implementations
         {
             _gameRepository = gameRepository;
         }
-
-        public BaseResponse<Game> Add(Game model)
+        public BaseResponse<Game> Add(GameAddViewModel model)
         {
             var game = _gameRepository.GetAll().FirstOrDefault(x => x.Name == model.Name);
             if (game == null)
             {
-                game = model;
+                game = new Game()
+                {
+                    Name = model.Name,
+                    Description = model.Description,
+                    GenreId = model.GenreId,
+                    Price = model.Price
+                };
+                using (var memoryStream = new MemoryStream())
+                {
+                    model.Image.CopyTo(memoryStream);
+                    game.Image = memoryStream.ToArray();
+                }
                 _gameRepository.Create(game);
                 return new BaseResponse<Game>
                 {

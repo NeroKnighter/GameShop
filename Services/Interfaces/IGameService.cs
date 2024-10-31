@@ -12,7 +12,7 @@ namespace GameShop.Service.Interfaces
     public interface IGameService
     {
         BaseResponse<Game> Add(GameAddViewModel model);
-        BaseResponse<Game> Update(Game model);
+        BaseResponse<Game> Update(GameEditViewModel model);
         BaseResponse<Game> Delete(Game model);
 
     }

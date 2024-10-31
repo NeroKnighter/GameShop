@@ -10,7 +10,7 @@
                     @{
                         var items = ViewBag.Genres as List<Genre>;
                     }
-                    <h3>@item.Name</h3>
+                    <h3><a asp-action="FullInfo" asp-controller="Game" asp-route-id="@item.Id">@item.Name</a></h3>
                     <p>@items.FirstOrDefault(x => x.Id == item.GenreId).Name</p>
                 </td>
                 <td>@item.Description</td>

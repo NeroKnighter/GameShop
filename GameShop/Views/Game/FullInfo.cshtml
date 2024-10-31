@@ -1,0 +1,6 @@
+﻿@model GameShop.Domain.Models.Game
+
+@Model.Name
+
+<a asp-action="Edit" asp-controller="Game" class="btn btn-primary" asp-route-id="@Model.Id">Редактировать</a>
+<a asp-action="Delete" asp-controller="Game" class="btn btn-primary">Удалить</a>

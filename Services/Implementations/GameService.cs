@@ -75,13 +75,26 @@ namespace GameShop.Service.Implementations
 
         }
 
-        public BaseResponse<Game> Update(Game model)
+        public BaseResponse<Game> Update(GameEditViewModel model)
         {
             var game = _gameRepository.GetAll().FirstOrDefault(x => x.Name == model.Name);
             if (game != null)
             {
-                game = model;
+                game = new Game() 
+                {
+                    Name = model.Name,
+                    Description = model.Description,
+                    GenreId = model.GenreId,
+                    Price = model.Price
+
+                };
+                using (var memoryStream = new MemoryStream())
+                {
+                    model.Image.CopyTo(memoryStream);
+                    game.Image = memoryStream.ToArray();
+                }
                 _gameRepository.Update(game);
+
                 return new BaseResponse<Game>
                 {
                     Description = "Игра обновлена",

@@ -10,6 +10,7 @@ namespace GameShop.Domain.Models.ViewModels
 {
     public class GameEditViewModel
     {
+        public int Id { get; set; }    
 
         [Required(ErrorMessage = "Введите название игры!")]
         public string Name { get; set; }

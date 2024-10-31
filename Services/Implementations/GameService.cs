@@ -54,7 +54,7 @@ namespace GameShop.Service.Implementations
 
         public BaseResponse<Game> Delete(Game model)
         {
-            var game = _gameRepository.GetAll().FirstOrDefault(x => x.Name == model.Name);
+            var game = _gameRepository.GetAll().FirstOrDefault(x => x.Id == model.Id);
             if (game != null)
             {
                 _gameRepository.Delete(game);
@@ -77,24 +77,20 @@ namespace GameShop.Service.Implementations
 
         public BaseResponse<Game> Update(GameEditViewModel model)
         {
-            var game = _gameRepository.GetAll().FirstOrDefault(x => x.Name == model.Name);
+            var game = _gameRepository.GetAll().FirstOrDefault(x => x.Id == model.Id);
             if (game != null)
             {
-                game = new Game() 
-                {
-                    Name = model.Name,
-                    Description = model.Description,
-                    GenreId = model.GenreId,
-                    Price = model.Price
-
-                };
+                game.Name = model.Name;
+                game.Description = model.Description;
+                game.GenreId = model.GenreId;
+                game.Price = model.Price;
                 using (var memoryStream = new MemoryStream())
                 {
                     model.Image.CopyTo(memoryStream);
                     game.Image = memoryStream.ToArray();
                 }
-                _gameRepository.Update(game);
 
+                _gameRepository.Update(game);
                 return new BaseResponse<Game>
                 {
                     Description = "Игра обновлена",

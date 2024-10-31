@@ -80,23 +80,17 @@ namespace GameShop.Controllers
             var Genres = _genreRepository.GetAll().ToList();
             ViewBag.Genres = Genres;
 
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
                 var response = _gameService.Update(model);
                 if (response.StatusCode == "OK")
-                {
+                    {
                     return RedirectToAction("Index", "Game");
                 }
-          //  }
+            }
+
             var game = _gameRepository.GetAll().FirstOrDefault(x => x.Id == Id);
-            GameEditViewModel model_1 = new GameEditViewModel()
-            {
-                Name = game.Name,
-                Price = game.Price,
-                Description = game.Description,
-                GenreId = game.GenreId,
-            };
-            return View(model_1);
+            return View(game);
         }
         [HttpPost]
         public IActionResult Delete(Game game) 

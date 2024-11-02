@@ -13,7 +13,7 @@ namespace GameShop.Service.Interfaces
     {
         BaseResponse<Game> Add(GameAddViewModel model);
         BaseResponse<Game> Update(GameEditViewModel model);
-        BaseResponse<Game> Delete(Game model);
+        BaseResponse<Game> Delete(int Id);
 
     }
 }

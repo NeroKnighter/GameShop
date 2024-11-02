@@ -1,8 +1,336 @@
 ﻿@model GameShop.Domain.Models.Game
 
-@Model.Name
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Name, Price​, Mark: Value, Power:Value, Model: Value​, Mileage: Value, Color: Value​, Capacity: Value​">
+    <meta name="description" content="">
+    <title>Главная</title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+    <link rel="stylesheet" href="Главная.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 6.8.9, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 
-<a asp-action="Edit" asp-controller="Game" asp-route-id="@Model.Id" class="btn btn-primary">Редактировать</a>
-<form asp-action="Delete" asp-controller="Game" asp-route-id="@Model.Id">
-<input type="submit" class="btn btn-primary" value="Удалить">
-</form>
+
+
+
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Главная">
+    <meta property="og:type" content="website">
+    <meta data-intl-tel-input-cdn-path="intlTelInput/">
+</head>
+<body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="ru">
+    <header class="u-clearfix u-header u-header" id="sec-81d5"><div class="u-clearfix u-sheet u-sheet-1"></div></header>
+    <section class="u-clearfix u-section-1" id="sec-5b86">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <img class="u-image u-image-default u-image-1" src="@ViewBag.Image" alt="нету фотки" data-image-width="400" data-image-height="265">
+            <h1 class="u-text u-text-1">@Model.Name</h1><br />
+            <h2 class="u-text u-text-2">@string.Format("{0:C0}", Model.Price)</h2><br />
+            <table class="table1">
+                <tr>
+                    <td>Название</td>
+                    <td>@Model.Name</td>
+                </tr>
+               @*  <tr>
+                    <td>Модель</td>
+                    <td>@Model.Model</td>
+                </tr> *@
+                <tr>
+                    <td>Жанр</td>
+                    <td>@ViewBag.Genre</td>
+                </tr>
+                <tr>
+                    <td>Цвет</td>
+                    <td>@Model.Price</td>
+                </tr>
+            </table>
+           
+            <div class="Desc">
+                @Model.Description
+            </div>
+            <br />
+             <center>
+                 <table class="table2">
+                  <td>
+                      <a asp-action="Index" asp-controller="Game" class="btn btn-primary">Назад</a>
+                 </td>
+                  <td><form asp-action="Edit" asp-controller="Game" asp-route-id="@Model.Id" method="get">
+                           <input type="submit" class="btn btn-primary" value="Редактировать">
+                 </form><br />
+                 </td>
+                 <td><form asp-action="Delete" asp-controller="Game" asp-route-id="@Model.Id">
+                          <input type="submit" class="btn btn-primary" value="Удалить">
+                 </form><br />
+                 </td>
+                 </table>
+             </center>  
+        </div>
+    </section>
+</body>
+</html>
+
+
+<style>
+    .inline {
+   display:inline-block;
+   margin-right:5px;
+}
+
+    .floated {
+   float:right;
+   margin-right:5px;
+}
+    .u-section-1 .u-sheet-1 {
+  min-height: 796px;
+}
+
+.u-section-1 .u-image-1 {
+  width: 544px;
+  height: 384px;
+  margin: 17px auto 0 43px;
+}
+table.table1 {
+  width: 544px;
+  height: 384px;
+  margin: 17px auto 0 43px;
+  border:solid;
+}
+table.table1 td {
+    border:solid;
+}
+table.table1 tr {
+    border:solid;
+}
+.Desc {
+    margin: 17px auto 0 43px;
+  /*   border:solid; */
+}
+.u-section-1 .u-text-1 {
+  margin: -231px 113px 0 675px;
+}
+
+.u-section-1 .u-text-2 {
+  margin: 99px 113px 0 675px;
+}
+
+.u-section-1 .u-text-3 {
+  margin: 18px 745px 0 43px;
+}
+
+.u-section-1 .u-text-4 {
+  margin: -53px 457px 0 330px;
+}
+
+.u-section-1 .u-text-5 {
+  margin: 30px 745px 0 43px;
+}
+
+.u-section-1 .u-text-6 {
+  margin: -53px 457px 0 330px;
+}
+
+.u-section-1 .u-text-7 {
+  margin: 25px 744px 0 43px;
+}
+
+.u-section-1 .u-text-8 {
+  margin: -53px 457px 60px 330px;
+}
+
+@Model (max-width: 1199px) {
+  .u-section-1 .u-image-1 {
+    margin-top: 168px;
+  }
+
+  .u-section-1 .u-text-1 {
+    margin-top: -153px;
+    margin-right: 13px;
+    margin-left: 575px;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-top: 44px;
+    margin-right: 12px;
+    margin-left: 575px;
+  }
+
+  .u-section-1 .u-text-3 {
+    margin-top: 30px;
+    margin-right: 587px;
+    margin-left: 0;
+  }
+
+  .u-section-1 .u-text-4 {
+    margin-top: 122px;
+    margin-right: 357px;
+    margin-left: 230px;
+  }
+
+  .u-section-1 .u-text-5 {
+    margin-top: -207px;
+    margin-right: 587px;
+    margin-left: 0;
+  }
+
+  .u-section-1 .u-text-6 {
+    margin-right: 357px;
+    margin-left: 230px;
+  }
+
+  .u-section-1 .u-text-7 {
+    margin-right: 587px;
+    margin-left: 0;
+  }
+
+  .u-section-1 .u-text-8 {
+    margin-right: 357px;
+    margin-left: 230px;
+  }
+}
+
+@Model (max-width: 991px) {
+  .u-section-1 .u-text-1 {
+    margin-right: 0;
+    margin-left: 368px;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-right: 0;
+    margin-left: 368px;
+  }
+
+  .u-section-1 .u-text-3 {
+    margin-right: 367px;
+  }
+
+  .u-section-1 .u-text-4 {
+    margin-right: 247px;
+    margin-left: 120px;
+  }
+
+  .u-section-1 .u-text-5 {
+    margin-right: 367px;
+  }
+
+  .u-section-1 .u-text-6 {
+    margin-right: 247px;
+    margin-left: 120px;
+  }
+
+  .u-section-1 .u-text-7 {
+    margin-right: 367px;
+  }
+
+  .u-section-1 .u-text-8 {
+    margin-right: 247px;
+    margin-left: 120px;
+  }
+}
+
+@Model (max-width: 767px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 793px;
+  }
+
+  .u-section-1 .u-image-1 {
+    width: 540px;
+    height: 381px;
+    margin-top: 155px;
+    margin-left: 0;
+  }
+
+  .u-section-1 .u-text-1 {
+    margin-top: -234px;
+    margin-left: 188px;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-top: 129px;
+    margin-left: 188px;
+  }
+
+  .u-section-1 .u-text-3 {
+    margin-top: 57px;
+    margin-right: 187px;
+  }
+
+  .u-section-1 .u-text-4 {
+    margin-top: 131px;
+    margin-right: 157px;
+    margin-left: 30px;
+  }
+
+  .u-section-1 .u-text-5 {
+    margin-right: 187px;
+  }
+
+  .u-section-1 .u-text-6 {
+    margin-right: 157px;
+    margin-left: 30px;
+  }
+
+  .u-section-1 .u-text-7 {
+    margin-right: 187px;
+  }
+
+  .u-section-1 .u-text-8 {
+    margin-right: 157px;
+    margin-left: 30px;
+  }
+}
+
+@Model (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 652px;
+  }
+
+  .u-section-1 .u-image-1 {
+    width: 340px;
+    height: 240px;
+    margin-top: 149px;
+  }
+
+  .u-section-1 .u-text-1 {
+    margin-top: -133px;
+    margin-left: 0;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-top: 221px;
+    margin-left: 0;
+  }
+
+  .u-section-1 .u-text-3 {
+    margin-top: 70px;
+    margin-right: 0;
+  }
+
+  .u-section-1 .u-text-4 {
+    margin-top: 58px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .u-section-1 .u-text-5 {
+    margin-right: 0;
+  }
+
+  .u-section-1 .u-text-6 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .u-section-1 .u-text-7 {
+    margin-right: 0;
+  }
+
+  .u-section-1 .u-text-8 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+</style>

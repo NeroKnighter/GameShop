@@ -52,9 +52,9 @@ namespace GameShop.Service.Implementations
             }
         }
 
-        public BaseResponse<Game> Delete(Game model)
+        public BaseResponse<Game> Delete(int Id)
         {
-            var game = _gameRepository.GetAll().FirstOrDefault(x => x.Id == model.Id);
+            var game = _gameRepository.GetAll().FirstOrDefault(x => x.Id == Id);
             if (game != null)
             {
                 _gameRepository.Delete(game);

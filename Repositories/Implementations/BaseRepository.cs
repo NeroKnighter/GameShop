@@ -58,7 +58,7 @@ namespace Repositories.Implementations
         public async Task<T> Update(T entity)
         {
             _dbSet.Update(entity); 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return entity;  
         }
     }

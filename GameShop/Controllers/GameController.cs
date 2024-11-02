@@ -95,7 +95,7 @@ namespace GameShop.Controllers
         [HttpPost]
         public IActionResult Delete(Game game) 
         {
-            var response = _gameService.Delete(game);
+            var response = _gameService.Delete(game.Id);
             if (response.StatusCode == "OK")
             {
                 return RedirectToAction("Index", "Game");
@@ -107,7 +107,16 @@ namespace GameShop.Controllers
         public IActionResult FullInfo(int Id) 
         {
             var game = _gameRepository.GetAll().FirstOrDefault(x => x.Id == Id);
-            return View(game);
+            if (game != null) {
+                try
+                {
+                    ViewBag.Genre = _genreRepository.GetAll().FirstOrDefault(x => x.Id == game.GenreId).Name;
+                }
+                catch { }
+                ViewBag.Image = $"data:image/jpeg;base64,{Convert.ToBase64String(game.Image)}";
+                return View(game);
+            }
+            return View();  
         } 
     }
 }
